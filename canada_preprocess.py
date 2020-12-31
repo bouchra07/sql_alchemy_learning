@@ -11,6 +11,17 @@ chapter = df.chapter
 
 section_ids = []
 
+depths = []
+for index, row in df.iterrows():
+    level = row['level']
+    if level == 2 :
+        depths.append(1)
+    # elif level == 4:
+    #     depths.append(2)
+    else:
+        depths.append(2)
+
+
 for index, row in df.iterrows():
     chapter = row['chapter']
     if chapter in range(1,6) :
@@ -61,6 +72,8 @@ for index, row in df.iterrows():
 
 df['section_id'] = section_ids
 del df["hs_code2"]
-df.to_csv('data/new_canada.csv',index=None)
+df['depth'] = depths
+
+df.to_csv('data/new_canada.csv')
 
 
