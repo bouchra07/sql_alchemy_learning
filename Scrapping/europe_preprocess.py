@@ -1,7 +1,7 @@
 import pandas as pd
 
 dtypes = {'hs_code': 'str', 'description': 'str'}
-df = pd.read_csv('data/neurope.csv', sep =',')
+df = pd.read_csv('Scrapping/data/neurope.csv', sep =',')
 
 df['hs_code'] = df.hs_code.astype(str)
 df['hs_code'] = df.hs_code.str.replace('.','')

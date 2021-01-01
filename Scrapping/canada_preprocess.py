@@ -1,6 +1,6 @@
 import pandas as pd
 
-df = pd.read_csv('data/canada_hs_test.csv', sep=',')
+df = pd.read_csv('Scrapping/data/canada_hs_test.csv', sep=',')
 df['hs_code2'] = df.hs_code.str.replace('.','')
 df['level'] = df['hs_code2'].str.len()
 
