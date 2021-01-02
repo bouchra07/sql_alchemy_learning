@@ -4,3 +4,5 @@ pandas
 numpy
 sqlalchemy
 xlrd
+flask-sqlalchemy
+Flask-Migrate
