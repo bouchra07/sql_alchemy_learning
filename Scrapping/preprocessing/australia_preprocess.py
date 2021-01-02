@@ -1,6 +1,6 @@
 import pandas as pd
 
-df = pd.read_csv('data/australia_hs.csv', sep='\t')
+df = pd.read_csv('../data/australia_hs.csv', sep='\t')
 
 
 # df = df.rename(columns = {'country_id': 'region_id'}, inplace = False)
