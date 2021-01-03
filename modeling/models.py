@@ -1,5 +1,4 @@
-from flask_sqlalchemy import SQLAlchemy
-db = SQLAlchemy()
+from app import db
 
 class RegionsModel(db.Model):
     __tablename__ = 'regions'
@@ -14,7 +13,8 @@ class RegionsModel(db.Model):
 class CountriesModel(db.Model):
     __tablename__ = 'countries'
 
-    code = db.Column(db.String(), primary_key = True)
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    code = db.Column(db.String())
     name = db.Column(db.String())
     region_id = db.Column(db.Integer, db.ForeignKey('regions.id'), nullable=False)
     def __init__(self, code,name,region_id):
