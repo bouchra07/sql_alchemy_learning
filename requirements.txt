@@ -6,3 +6,5 @@ sqlalchemy
 xlrd
 flask-sqlalchemy
 Flask-Migrate
+treelib
+flask_script
