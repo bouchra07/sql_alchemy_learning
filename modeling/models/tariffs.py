@@ -17,19 +17,9 @@ class Tariff(db.Model):
 
 
 
-    def _repr_(self):
-        return '<id {}>'.format(self.id)
+    def __repr__(self):
+        return '<Tariff {}>'.format(self.hs_code)
 
-    def serialize(self):
-        return {
-            'id': self.id,
-            'hs_code': self.hs_code,
-            'description': self.description,
-            'chapter': self.chapter,
-            'section_id': self.section_id,
-            'region_id': self.region_id,
-            'parent_id' : self.parent_id
-        }
 
 # from app import db
 #

@@ -1,7 +1,7 @@
 from app import db
 
 
-class SectionsModel(db.Model):
+class Section(db.Model):
     __tablename__ = 'sections'
 
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)

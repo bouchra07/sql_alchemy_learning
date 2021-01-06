@@ -1,6 +1,6 @@
 from app import db
 
-class RegionsModel(db.Model):
+class Region(db.Model):
     __tablename__ = 'regions'
 
     id = db.Column(db.Integer, primary_key = True, autoincrement = True)
