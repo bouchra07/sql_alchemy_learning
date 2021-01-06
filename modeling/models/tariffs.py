@@ -4,7 +4,7 @@ from sqlalchemy.orm import relationship
 from app import db
 
 class Tariff(db.Model):
-    _tablename_ = 'tariffs'
+    __tablename__ = 'tariffs'
 
     id = db.Column(db.Integer, primary_key=True)
     children = relationship("Child")
@@ -14,8 +14,6 @@ class Tariff(db.Model):
     section_id = db.Column(db.Integer)
     region_id = db.Column(db.Integer)
     parent_id = Column(Integer, ForeignKey('tariffs.id'))
-
-
 
     def __repr__(self):
         return '<Tariff {}>'.format(self.hs_code)
