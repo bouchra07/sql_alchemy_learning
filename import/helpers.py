@@ -4,14 +4,12 @@ from zipfile import ZipFile
 import fnmatch
 import gzip
 import sqlalchemy
-from dotenv import load_dotenv
 import os
 
 def log_import(filename):
     df = pd.read_csv(filename, sep=',')
     print(df)
     return df
-
 
 def zip_import(filename):
     with ZipFile(filename) as zipfiles:
@@ -37,8 +35,7 @@ def gz_import(filename):
 #     return df
 
 def connect():
-    load_dotenv()
-    engine = sqlalchemy.create_engine(os.getenv("POSTGRES_ENGINE"))
+    engine = sqlalchemy.create_engine("postgres://docker:docker@localhost:5432/docker")
     con = engine.connect()
     return con
 
