@@ -7,7 +7,8 @@ import sqlalchemy
 import os
 
 def log_import(filename):
-    df = pd.read_csv(filename, sep=',')
+    dtypes = {'hs_code': 'str', 'description': 'str', 'parent': 'int'}
+    df = pd.read_csv(filename, sep=',',dtype=dtypes)
     print(df)
     return df
 

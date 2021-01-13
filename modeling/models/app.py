@@ -7,11 +7,6 @@ app.config['SQLALCHEMY_DATABASE_URI'] = "postgres://docker:docker@localhost:5432
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 
-from regions import Region
-from sections import Section
-from countries import Country
-from tariffs import Tariff
-
 @app.route('/')
 def hello():
     return {"hello": "world"}

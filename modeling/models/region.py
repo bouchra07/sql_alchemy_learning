@@ -1,4 +1,4 @@
-from app import db
+from modeling.models.app import db
 
 class Region(db.Model):
     __tablename__ = 'regions'
