@@ -1,5 +1,6 @@
 from sqlalchemy import Column, Integer, ForeignKey
 from sqlalchemy.orm import relationship, backref
+from tariff_hierarchy import TariffHierarchy
 
 from app import db
 
@@ -22,6 +23,41 @@ class Tariff(db.Model):
         self.region_id = region_id
         self.section_id = section_id
         self.parent_id = parent_id
+
+    def getChildren(self):
+        return self.children
+
+    def __init__(self):
+        pass
+
+    def getHsCodeBYId(self, id):
+        return self.query.filter(Tariff.id == id).first().hs_code
+
+    def getIdByHsCode(self,hs_code):
+        return self.query.filter(Tariff.hs_code == hs_code).first().id
+
+    def getDescendantsById(self, id):
+        h = TariffHierarchy()
+        tree = h.get_descendants(id)
+        return [(t, self.getHsCodeBYId(t)) for t in tree]
+
+    def getDescendantsByHsCode(self, hs_code):
+        h = TariffHierarchy()
+        tree = h.get_descendants(self.getIdByHsCode(hs_code))
+        return [(t, self.getHsCodeBYId(t)) for t in tree]
+
+    def getAncestorsById(self,id):
+        h = TariffHierarchy()
+        tree = h.get_ancestors(id)
+        return [(t,self.getHsCodeBYId(t)) for t in tree]
+
+    def getAncestorsByHsCode(self,hs_code):
+        h = TariffHierarchy()
+        tree = h.get_ancestors(self.getIdByHsCode(hs_code))
+        return [(t,self.getHsCodeBYId(t)) for t in tree]
+
+
+
 
 
 
